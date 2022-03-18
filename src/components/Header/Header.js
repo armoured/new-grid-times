@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { Menu, Search, User } from 'react-feather';
 
-import { QUERIES } from '../../constants';
+import { QUERIES, COLORS, WEIGHTS, FAMILIES } from '../../constants';
 
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import Logo from '../Logo';
@@ -29,7 +29,21 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
+        <DesktopRow>
+          <ActionGroup>
+            <button>
+              <Search size={24} />
+            </button>
+            <button>
+              <Menu size={24} />
+            </button>
+          </ActionGroup>
+        </DesktopRow>
         <Logo />
+        <HeaderRight>
+          <SubscribeButton>subscribe</SubscribeButton>
+          <SubscribeLink>Already a subscriber?</SubscribeLink>
+        </HeaderRight>
       </MainHeader>
     </header>
   );
@@ -39,11 +53,30 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;   
+`;
+
+const DesktopRow = styled(MaxWidthWrapper)`
+  display: none;
+
+
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+    grid-area: left-side;    
+    justify-self: start;
+    padding: 0;
+  }
+  
 `;
 
 const ActionGroup = styled.div`
@@ -59,12 +92,63 @@ const ActionGroup = styled.div`
   }
 `;
 
+const HeaderRight = styled.div`
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    grid-area: right-side;
+    justify-self: end;
+  }
+`;
+
+
 const MainHeader = styled(MaxWidthWrapper)`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: grid;
+    grid-template-columns: 1fr 500px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    'left-side logo right-side';
+    align-items: baseline;
+  }
 `;
+
+const SubscribeButton = styled.button`
+  padding: ${11/16}rem ${24/16}rem;
+  background: ${COLORS.primary};
+  color: ${COLORS.white};
+  border-radius: 4px;
+
+  font-family: ${FAMILIES.sansSerif};
+  font-size: 1rem;
+  line-height: ${18/16}rem;
+  font-weight: ${WEIGHTS.medium};
+  text-transform: uppercase;
+  text-align: center;
+`;
+
+const SubscribeLink = styled.a`
+  text-decoration: underline;
+  cursor: pointer;
+
+  font-family: ${FAMILIES.serif};
+  font-style: italic;
+  font-weight: ${WEIGHTS.normal};
+  font-size: ${14/16}rem;
+  line-height: ${22/16}rem;
+
+  color: ${COLORS.gray[900]};
+`;
+
 
 export default Header;

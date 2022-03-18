@@ -17,6 +17,7 @@ const Logo = (props) => {
 
 const Wrapper = styled.div`
   text-align: center;
+  grid-area: logo
 `;
 
 const Link = styled.a`
