@@ -6,6 +6,7 @@ import {
   OPINION_STORIES,
   SECONDARY_STORIES,
 } from '../../data';
+import { COLORS, QUERIES } from '../../constants';
 
 import SectionTitle from '../SectionTitle';
 import MainStory from '../MainStory';
@@ -14,6 +15,7 @@ import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
 
 const MainStoryGrid = () => {
+
   return (
     <Wrapper>
       <MainStorySection>
@@ -64,8 +66,22 @@ const SecondaryStorySection = styled.section`
 `;
 
 const StoryList = styled.div`
+  --breathing-room: 17px; // 16 + 1 for gap
   display: flex;
   flex-direction: column;
+  background: ${COLORS.gray[300]};
+  gap: 1px;
+  margin-bottom: calc(-1 * var(--breathing-room));
+  margin-top: calc(-1 * var(--breathing-room));
+
+  @media ${QUERIES.tabletOnly} {
+    &:nth-of-type(2) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 32px;
+      background: ${COLORS.gray[100]};
+    }
+  }
 `;
 
 const OpinionSection = styled.section`
