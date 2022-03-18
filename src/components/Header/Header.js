@@ -99,6 +99,7 @@ const HeaderRight = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 8px;
 
     grid-area: right-side;
     justify-self: end;
@@ -113,9 +114,19 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.laptopAndUp} {
+    margin-top: 16px;
+    margin-bottom: 81px;
+
     display: grid;
-    grid-template-columns: 1fr 500px 1fr;
+    align-items: revert;
+    justify-content: revert;
+    grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
     'left-side logo right-side';
