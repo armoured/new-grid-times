@@ -25,9 +25,6 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
-  background: ${COLORS.gray[100]};
-  padding-bottom: var(--breathing-room);
-  padding-top: var(--breathing-room);
 `;
 
 const Image = styled.img`

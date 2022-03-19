@@ -25,7 +25,9 @@ const MainStoryGrid = () => {
       <SecondaryStorySection>
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
-            <SecondaryStory key={story.id} {...story} />
+            <VerticalStoryWrapper key={story.id}>
+                <SecondaryStory {...story} />
+            </VerticalStoryWrapper>
           ))}
         </StoryList>
       </SecondaryStorySection>
@@ -34,7 +36,9 @@ const MainStoryGrid = () => {
         <SectionTitle>Opinion</SectionTitle>
         <StoryList>
           {OPINION_STORIES.map((story, index) => (
-            <OpinionStory key={story.id} {...story} />
+            <VerticalStoryWrapper key={story.id}>
+              <OpinionStory {...story} />
+            </VerticalStoryWrapper>
           ))}
         </StoryList>
       </OpinionSection>
@@ -65,21 +69,31 @@ const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
 `;
 
+const VerticalStoryWrapper = styled.div`
+  &:not(:last-of-type) {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-gray-300);
+    margin-bottom: 16px;
+  }
+
+`;
+
 const StoryList = styled.div`
-  --breathing-room: 17px; // 16 + 1 for gap
   display: flex;
   flex-direction: column;
-  background: ${COLORS.gray[300]};
-  gap: 1px;
-  margin-bottom: calc(-1 * var(--breathing-room));
-  margin-top: calc(-1 * var(--breathing-room));
+
 
   @media ${QUERIES.tabletOnly} {
     &:nth-of-type(2) {
       flex-direction: row;
       justify-content: space-between;
       gap: 32px;
-      background: ${COLORS.gray[100]};
+
+      & ${VerticalStoryWrapper} {
+        padding-bottom: revert;
+        margin-bottom: revert;
+        border-bottom: revert;
+      }
     }
   }
 `;

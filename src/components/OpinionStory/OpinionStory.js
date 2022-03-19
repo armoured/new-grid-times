@@ -20,8 +20,6 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 const Wrapper = styled.article`
   color: var(--color-gray-900);
   background: ${COLORS.gray[100]};
-  padding-bottom: var(--breathing-room);
-  padding-top: var(--breathing-room);
 `;
 
 const Avatar = styled.img`
