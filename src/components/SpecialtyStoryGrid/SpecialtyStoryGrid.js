@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { MARKET_DATA, SPORTS_STORIES } from '../../data';
+import { QUERIES } from '../../constants';
 
 import MarketCard from '../MarketCard';
 import SectionTitle from '../SectionTitle';
@@ -51,10 +52,26 @@ const Wrapper = styled.div`
 
 const MarketsSection = styled.section``;
 
-const MarketCards = styled.div``;
+const MarketCards = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
 
 const SportsSection = styled.section``;
 
-const SportsStories = styled.div``;
+const SportsStories = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
 
 export default SpecialtyStoryGrid;

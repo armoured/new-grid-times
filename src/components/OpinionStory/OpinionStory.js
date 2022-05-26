@@ -50,7 +50,7 @@ const ArticleTitle = styled.h3`
   line-height: 1.3;
 
   @media ${QUERIES.tabletOnly} {
-    width: 15ch;
+    max-width: 15ch;
   }
 
 `;
